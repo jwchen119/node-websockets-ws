@@ -16,7 +16,7 @@ ws.on('open', () => {
 })
 
 ws.onTicker({ symbol: SYMBOL }, (ticker) => {
-  console.log(SYMBOL, ticker)
+  console.log('ok')
 })
 
 ws.open()
