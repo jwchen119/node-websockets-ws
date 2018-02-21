@@ -43,7 +43,7 @@ let prevTS = null
 
 ws.onCandle({ key: CANDLE_KEY }, (candles) => {
 //  if (prevTS === null || candles[0].mts > prevTS) {
-//    c = candles[1] // report previous candle
+    c = candles[0] // report previous candle
 
     console.log(`%s %s open: %f, high: %f, low: %f, close: %f, volume: %f`,
       CANDLE_KEY, new Date(c.mts).toLocaleTimeString(),
