@@ -70,10 +70,11 @@ function calcTime(city, offset) {
     return "在 " + city + " 的本地時間是 " + nd.toLocaleString();
 }
 
-var date_taipei = DateTimezone(8);
+var date_taipei = "";
 
 setInterval(() => {
     wss.clients.forEach((client) => {
+      date_taipei = DateTimezone(8);
       Crypto = {date: date_taipei.toLocaleString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
       client.send(JSON.stringify(Crypto));
     });
