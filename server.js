@@ -55,6 +55,7 @@ ws.open()
 var d = "";
 var utc = "";
 var nd = "";
+var date_taipei = "";
 
 function DateTimezone(offset) {
     d = new Date();
@@ -63,19 +64,10 @@ function DateTimezone(offset) {
 
 }
 
-function calcTime(city, offset) {
-    d = new Date();
-    utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-    nd = new Date(utc + (3600000*offset));
-    return "在 " + city + " 的本地時間是 " + nd.toLocaleString();
-}
-
-var date_taipei = "";
-
 setInterval(() => {
     wss.clients.forEach((client) => {
       date_taipei = DateTimezone(8);
-      Crypto = {date: date_taipei.toLocaleString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
+      Crypto = {local_date: date_taipei.toLocaleString(), candle_date: new Date(c.mts).toLocaleTimeString(), open :c.open, close: c.close, high: c.high, low: c.low, volume: c.volume};  
       client.send(JSON.stringify(Crypto));
     });
 }, 1000);
