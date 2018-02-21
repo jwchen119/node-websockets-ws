@@ -19,6 +19,8 @@ ws.on('open', () => {
   ws.subscribeCandles(CANDLE_KEY)
 })
 
+let prevTS = null
+
 ws.onCandle({ key: CANDLE_KEY }, (candles) => {
   if (prevTS === null || candles[0].mts > prevTS) {
     const c = candles[1] // report previous candle
