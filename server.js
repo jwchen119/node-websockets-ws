@@ -1,11 +1,20 @@
 'use strict'
 
 const BFX = require('bitfinex-api-node');
+const express = require('express');
+const path = require('path');
 
 const bfx = new BFX({ 
     apiKey: '1234',
     apiSecret: '4321',
 })
+
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const ws = bfx.ws(2, {
   manageCandles: true,  // enable candle dataset persistence/management
