@@ -31,6 +31,7 @@ const ws = bfx.ws(2, {
 })
 
 const CANDLE_KEY = 'trade:1m:tIOTUSD'
+var c = "";
 
 ws.on('open', () => {
   console.log('open')
@@ -41,7 +42,7 @@ let prevTS = null
 
 ws.onCandle({ key: CANDLE_KEY }, (candles) => {
   if (prevTS === null || candles[0].mts > prevTS) {
-    const c = candles[1] // report previous candle
+    c = candles[1] // report previous candle
 
     console.log(`%s %s open: %f, high: %f, low: %f, close: %f, volume: %f`,
       CANDLE_KEY, new Date(c.mts).toLocaleTimeString(),
