@@ -2,17 +2,16 @@
   
   <body>
     <p id='server-time'></p>
-    <title>Welcome!!</title>
-    <center><h1>Welcome to nginx!</h1></center>
     <script>
-      
       var HOST = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(HOST);
       var el = document.getElementById('server-time');
 
-        el.innerHTML = 'WELCOME!';
+      ws.onmessage = function (event) {
+        console.log(event);
+        var candle = JSON.parse(event.data);
+        el.innerHTML = 'TEST;
       };
-      
     </script>
   </body>
 </html>
