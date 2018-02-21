@@ -70,4 +70,4 @@ setInterval(() => {
       Crypto = {local_date: date_taipei.toLocaleString(), candle_date: new Date(c.mts).toLocaleTimeString(), open :c.open, close: c.close, high: c.high, low: c.low, volume: c.volume};  
       client.send(JSON.stringify(Crypto));
     });
-}, 500);
+}, 1000);
