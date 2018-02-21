@@ -9,7 +9,8 @@ const bfx = new BFX({
 
 const ws = bfx.ws(2, {
   manageCandles: true,  // enable candle dataset persistence/management
-  transform: true       // converts ws data arrays to Candle models (and others)
+  transform: true,       // converts ws data arrays to Candle models (and others)
+  autoReconnect: true
 })
 
 const CANDLE_KEY = 'trade:1m:tBTCUSD'
