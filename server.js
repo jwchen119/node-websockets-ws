@@ -32,6 +32,7 @@ const ws = bfx.ws(2, {
 
 const CANDLE_KEY = 'trade:1m:tIOTUSD'
 var c = "";
+var Crypto = {date:"Waiting...", open:"Waiting...", close:"Waiting...", high:"Waiting...", low:"Waiting...", volume:"Waiting..."};
 
 ws.on('open', () => {
   console.log('open')
@@ -57,6 +58,7 @@ ws.open()
 
 setInterval(() => {
     wss.clients.forEach((client) => {
-      client.send(JSON.stringify(c.mts));
+      Crypto = {date: new Date(c.mts).toLocaleTimeString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
+      client.send(JSON.stringify(Crypto));
     });
 }, 1000);
