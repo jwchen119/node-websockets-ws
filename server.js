@@ -13,7 +13,7 @@ const ws = bfx.ws(2, {
   autoReconnect: true
 })
 
-const CANDLE_KEY = 'trade:1m:tBTCUSD'
+const CANDLE_KEY = 'trade:1m:tIOTUSD'
 
 ws.on('open', () => {
   console.log('open')
