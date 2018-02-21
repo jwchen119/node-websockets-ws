@@ -1,8 +1,5 @@
 'use strict'
 
-const express = require('express');
-const SocketServer = require('ws');
-const path = require('path');
 const BFX = require('bitfinex-api-node');
 
 const bfx = new BFX({ 
