@@ -53,3 +53,9 @@ ws.onCandle({ key: CANDLE_KEY }, (candles) => {
 })
 
 ws.open()
+
+setInterval(() => {
+    wss.clients.forEach((client) => {
+      client.send(JSON.stringify(c.mts));
+    });
+}, 1000);
