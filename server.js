@@ -42,23 +42,42 @@ ws.on('open', () => {
 let prevTS = null
 
 ws.onCandle({ key: CANDLE_KEY }, (candles) => {
-//  if (prevTS === null || candles[0].mts > prevTS) {
     c = candles[0] // report previous candle
 
     console.log(`%s %s open: %f, high: %f, low: %f, close: %f, volume: %f`,
       CANDLE_KEY, new Date(c.mts).toLocaleTimeString(),
       c.open, c.high, c.low, c.close, c.volume
     )
-
-//    prevTS = candles[0].mts
-//  }
 })
 
 ws.open()
 
+// 新增當地時區的時間物件
+function DateTimezone(offset) {
+    // 建立現在時間的物件
+    d = new Date();
+    // 取得 UTC time
+    utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    // 新增不同時區的日期資料
+    return new Date(utc + (3600000*offset));
+
+}
+// 計算當地時區的時間
+function calcTime(city, offset) {
+    // 建立現在時間的物件
+    d = new Date();
+    // 取得 UTC time
+    utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    // 新增不同時區的日期資料
+    nd = new Date(utc + (3600000*offset));
+    // 顯示當地時間
+    return "在 " + city + " 的本地時間是 " + nd.toLocaleString();
+}
+var date_taipei = DateTimezone(8);
+
 setInterval(() => {
     wss.clients.forEach((client) => {
-      Crypto = {date: new Date().toLocaleTimeString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
+      Crypto = {date: date_taipei.toLocaleString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
       client.send(JSON.stringify(Crypto));
     });
 }, 1000);
