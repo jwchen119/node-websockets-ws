@@ -58,7 +58,7 @@ ws.open()
 
 setInterval(() => {
     wss.clients.forEach((client) => {
-      Crypto = {date: new Date(c.mts).toLocaleTimeString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
+      Crypto = {date: new Date().toLocaleTimeString(), open:c.open, close:c.close, high:c.high, low:c.low, volume:c.volume};  
       client.send(JSON.stringify(Crypto));
     });
 }, 1000);
