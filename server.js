@@ -11,12 +11,12 @@ const SYMBOL = 'tIOTEUR'
 const ws = bfx.ws(2)
 
 ws.on('open', () => {
-  debug('open')
+  console.log('open')
   ws.subscribeTicker(SYMBOL)
 })
 
 ws.onTicker({ symbol: SYMBOL }, (ticker) => {
-  debug('%s ticker: %j', SYMBOL, ticker)
+  console.log(SYMBOL, ticker)
 })
 
 ws.open()
