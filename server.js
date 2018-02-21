@@ -52,6 +52,10 @@ ws.onCandle({ key: CANDLE_KEY }, (candles) => {
 
 ws.open()
 
+var d = "";
+var utc = "";
+var nd = "";
+
 function DateTimezone(offset) {
     d = new Date();
     utc = d.getTime() + (d.getTimezoneOffset() * 60000);
