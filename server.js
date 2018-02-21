@@ -2,6 +2,7 @@
 
 const BFX = require('bitfinex-api-node');
 const express = require('express');
+const SocketServer = require('ws').Server;
 const path = require('path');
 
 const bfx = new BFX({ 
@@ -15,6 +16,13 @@ const INDEX = path.join(__dirname, 'index.html');
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const wss = new SocketServer({ server });
+
+wss.on('connection', (wsd) => {
+  console.log('Client connected');
+  wsd.on('close', () => console.log('Client disconnected'));
+});
 
 const ws = bfx.ws(2, {
   manageCandles: true,  // enable candle dataset persistence/management
