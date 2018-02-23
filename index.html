@@ -14,5 +14,37 @@
         document.title = '收盤: ' + candle.close;
       };
     </script>
+    
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_90fde"></div>
+  <div class="tradingview-widget-copyright"><a href="https://tw.tradingview.com/symbols/BITFINEX-IOTUSD/" rel="noopener" target="_blank"><span class="blue-text">IOTUSD</span> <span class="blue-text">chart</span> by TradingView</a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 1040,
+  "height": 610,
+  "symbol": "BITFINEX:IOTUSD",
+  "interval": "60",
+  "timezone": "Asia/Taipei",
+  "theme": "Light",
+  "style": "1",
+  "locale": "zh_TW",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "withdateranges": true,
+  "allow_symbol_change": true,
+  "hideideas": true,
+  "studies": [
+    "MACD@tv-basicstudies"
+  ],
+  "container_id": "tradingview_90fde"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+    
   </body>
 </html>
