@@ -10,7 +10,7 @@
       ws.onmessage = function (event) {
         console.log(event);
         var candle = JSON.parse(event.data);
-        el.innerHTML = 'IOTA 1分鐘K線: ' + '<br><br>' + '開盤: ' + candle.open + '<br>' + '收盤: ' + candle.close + '<br>' + '成交量: ' + candle.volume + '<br>' + 'Timestamp: ' + candle.candle_date + '<br><br><br><br><br><br><br>' + '本地時間: ' + candle.local_date;
+        el.innerHTML = 'IOTA 1分鐘K線: ' + '<br><br>' + '開盤: ' + candle.open + '<br>' + '收盤: ' + candle.close + '<br>' + '成交量: ' + candle.volume + '<br>' + 'Timestamp: ' + candle.candle_date + ' | ' + '本地時間: ' + candle.local_date;
         document.title = '收盤: ' + candle.close;
       };
     </script>
